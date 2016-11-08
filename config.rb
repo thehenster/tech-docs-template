@@ -5,6 +5,8 @@
 set :markdown_engine, :redcarpet
 set :markdown,
   fenced_code_blocks: true,
+  disable_indented_code_blocks: true,
+  prettify: true,
   smartypants: true,
   with_toc_data: true
 
@@ -30,6 +32,7 @@ configure :development do
 end
 
 activate :sprockets
+activate :syntax
 
 ###
 # Helpers
