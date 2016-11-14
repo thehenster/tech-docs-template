@@ -1,0 +1,14 @@
+test:
+  override:
+    - bundle exec middleman build
+  post:
+    - cf api https://api.cloud.service.gov.uk
+    - cf auth $CF_USER $CF_PASSWORD
+    - cf target -o $CF_USER -s integration
+    - cf a
+
+deployment:
+  integration:
+    branch: /integration_.*/
+    commands:
+      - cf push paas-tech-docs-integration -b staticfile_buildpack -m 64M -p ./build
