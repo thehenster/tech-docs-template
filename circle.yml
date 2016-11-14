@@ -1,6 +1,4 @@
 test:
-  override:
-    - bundle exec middleman build
   post:
     - cf api https://api.cloud.service.gov.uk
     - cf auth $CF_USER $CF_PASSWORD
